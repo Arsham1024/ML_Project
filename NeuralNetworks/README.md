@@ -18,7 +18,7 @@
 * output layer has 1 node with linear activation function.
 ---
 ### best Accuracy:
-###### best accuracy reached 87.9% 
+###### best accuracy reached 87.84% 
 ---
 ### Tools & Libraries: 
 * Python
