@@ -16,14 +16,14 @@ highestAccuracy = 0
 highestAccuracy2 = 0
 counter2=0
 #reading the data in a csv file
-with open('heartTraining_V2.csv', 'r') as trainingFile:
+with open('SVM/input_data/heartTraining_V2.csv', 'r') as trainingFile:
   reader = csv.reader(trainingFile)
   for i, row in enumerate(reader):
       X_training.append(row[:-1])
       Y_training.append(row[-1])
 
 #reading the data in a csv file
-with open('heartTesting_V2.csv', 'r') as testingFile:
+with open('SVM/input_data/heartTesting_V2.csv', 'r') as testingFile:
   reader = csv.reader(testingFile)
   for i, row in enumerate(reader):
       dbTest.append(row)
