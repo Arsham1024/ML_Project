@@ -19,7 +19,7 @@
 * Confusion matrix: Showing the performance of the classifier (TN, TP, FN, FP)
 ---
 ### Accuracy:
-#### **Best accuracy _86.95%_ with n_estimators = 20**
+#### **Best accuracy _87.31%_ with n_estimators = 20**
 ---
 ### Tools & Libraries:
 * Python
