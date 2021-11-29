@@ -1,10 +1,10 @@
-import tensorflow as tf
+
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
 import sklearn.preprocessing as pre
-from sklearn import preprocessing
+
+from keras import backend as k
 from keras.models import Sequential
 from keras.layers import *
 
@@ -40,12 +40,13 @@ y=np.asarray(y).astype(np.float32)
 # making test and train samples
 # X_train includes 642 rows
 # X_test includes 276
-X_train , X_test, Y_train, Y_test = train_test_split(X , y , test_size=0.3 , random_state=30)
+X_train , X_test, Y_train, Y_test = train_test_split(X , y , test_size=0.3, random_state=10)
 
 # making the model
 model = Sequential()
 
-# initial layer
+
+# input layer
 model.add(Dense(11 ,input_dim=10, activation='relu'))
 
 # hidden layer
@@ -60,28 +61,38 @@ model.add(Dense(1, activation='linear'))
 # Compile model
 # Using mean squared error
 model.compile(loss='mse' , optimizer="adam")
+# Set learning rate manually to 0.001
+k.set_value(model.optimizer.learning_rate, 0.001)
 
-# training
-model.fit(
-    # Training feautures
-    X_train,
-    Y_train,
-    # how many training passes
-    epochs= 1175,
-    # networks typically perform best when shuffle is true
-    shuffle=True,
-    # Mode detail info
-    verbose=2
-)
 
-# Error rate with test data
-error = model.evaluate(X_test, Y_test , verbose=0)
-# f1
-# recall
+for i in range(100):
+    # training
+    model.fit(
+        # Training feautures
+        X_train,
+        Y_train,
+        # how many training passes
+        epochs= 1175,
+        # networks typically perform best when shuffle is true
+        shuffle=True,
+        # Mode detail info
+        verbose=2
+    )
 
-# Calculate accuracy and round to two decimal places
-accuracy = round((1-error)*100 , 2)
-print(f"error rate is : {accuracy}%")
+    # Error rate with test data
+    error = model.evaluate(X_test, Y_test , verbose=1)
+    # f1
+    # recall
+
+    # Calculate accuracy and round to two decimal places
+    accuracy = round((1-error)*100 , 2)
+    print(f"Accuracy is : {accuracy}%")
+
+    # put the results in the txt file for avg later
+    with open("./output_data/accuracy.txt" , "a+") as f:
+        f.write(str(accuracy))
+        f.write("\n")
+
 
 # Save the nural network
 # .h5 aka htf5 format is a binary file format for python array data
