@@ -11,12 +11,10 @@
 ###### The dataset used was already clean, no specific cleaning was done. However, lable encoding used for some features for a better presentation and results.
 ---
 ### Plots:
-* Corrolation matrix : Discovering the most corrolated features
-* Boxplot : Checking for outliers
 * Confusion matrix: Showing the performance of the classifier (TN, TP, FN, FP)
 ---
 ### Accuracy:
-###### Getting an accuracy of 85.87%
+###### Best accuracy 86.95% with n_estimators = 20
 ---
 ### Tools & Libraries:
 * Python
