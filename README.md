@@ -14,7 +14,8 @@
 * Neural Networks
 * SVM
 * Random Forests
-* 
+* Logistic Regression
+* Ada Boost
 ---
 ### Using: 
 * Python
